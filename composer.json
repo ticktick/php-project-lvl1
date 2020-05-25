@@ -1,0 +1,17 @@
+{
+    "name": "ticktick/hexlet-php-project-1",
+    "description": "Solution fo Hexlet Brain Games project",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oleg Ageev",
+            "email": "ageev.oleg.v@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+    "bin": [
+      "bin/brain-games"
+    ]
+}
