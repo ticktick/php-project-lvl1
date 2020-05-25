@@ -1,4 +1,10 @@
 #!/usr/bin/env php
 <?php
 
-echo "Welcome to the Brain Games!";
+namespace BrainGames;
+
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+use function BrainGames\Cli\run;
+
+run();
