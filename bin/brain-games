@@ -3,7 +3,8 @@
 
 namespace BrainGames;
 
-require dirname(__DIR__) . '/vendor/autoload.php';
+$autoloadPath = __DIR__ . '/../vendor/autoload.php';
+require_once $autoloadPath;
 
 $game = new Game(3);
 $game->run();
