@@ -3,8 +3,13 @@
 
 namespace BrainGames;
 
-$autoloadPath = __DIR__ . '/../vendor/autoload.php';
-require_once $autoloadPath;
+$autoloadPathGlobal = __DIR__ . '/../../../autoload.php';
+$autoloadPathLocal = __DIR__ . '/../vendor/autoload.php';
+if (file_exists($autoloadPathGlobal)) {
+    require_once $autoloadPathGlobal;
+} else {
+    require_once $autoloadPathLocal;
+}
 
 $game = new Game(3);
 $game->run();
