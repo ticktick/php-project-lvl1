@@ -3,7 +3,5 @@
 
 namespace BrainGames;
 
-require_once __DIR__ . '/bootstrap.php';
-
-$game = new Quiz(Quiz::TYPE_EVEN, 3);
-$game->run();
+$runFunc = require_once __DIR__ . '/run.php';
+$runFunc(Quiz::TYPE_EVEN);
