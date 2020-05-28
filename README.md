@@ -9,3 +9,6 @@
 
 ## Brain-gcd example
 [![asciicast](https://asciinema.org/a/DTXLJh6GJhtoPTI2mBmJZf0Ia.svg)](https://asciinema.org/a/DTXLJh6GJhtoPTI2mBmJZf0Ia)
+
+## Brain-progressio example
+[![asciicast](https://asciinema.org/a/ZZk1oCzdO4x5JeGX2euMjgrB4.svg)](https://asciinema.org/a/ZZk1oCzdO4x5JeGX2euMjgrB4)
