@@ -5,6 +5,7 @@ namespace BrainGames;
 use BrainGames\Games\Even\Question as EvenQuestion;
 use BrainGames\Games\Calc\Question as CalcQuestion;
 use BrainGames\Games\Gcd\Question as GcdQuestion;
+use BrainGames\Games\Progression\Question as ProgressionQuestion;
 use BrainGames\Games\QuestionInterface;
 
 class Quiz
@@ -13,11 +14,13 @@ class Quiz
     public const TYPE_EVEN = 'even';
     public const TYPE_CALC = 'calc';
     public const TYPE_GCD = 'gcd';
+    public const TYPE_PROGRESSION = 'progression';
 
     private $typeClasses = [
         self::TYPE_EVEN => EvenQuestion::class,
         self::TYPE_CALC => CalcQuestion::class,
-        self::TYPE_GCD => GcdQuestion::class
+        self::TYPE_GCD => GcdQuestion::class,
+        self::TYPE_PROGRESSION => ProgressionQuestion::class
     ];
 
     private $cli;

@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+
+namespace BrainGames;
+
+require_once __DIR__ . '/bootstrap.php';
+
+$game = new Quiz(Quiz::TYPE_PROGRESSION, 3);
+$game->run();
