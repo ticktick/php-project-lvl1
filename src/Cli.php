@@ -15,9 +15,9 @@ class Cli
         line('Welcome to the Brain Game!');
     }
 
-    public function showRules()
+    public function showRules(string $rules)
     {
-        line('Answer "yes" if the number is even, otherwise answer "no".');
+        line($rules);
         line("");
     }
 
@@ -65,5 +65,12 @@ class Cli
     public function showCongratulations()
     {
         line('Congratulations, %s!', $this->getName());
+    }
+
+    public function showErrorAndStop(string $error = null)
+    {
+        $error = $error ?? 'An internal error occurred. Game stopped.';
+        line($error);
+        exit(-1);
     }
 }

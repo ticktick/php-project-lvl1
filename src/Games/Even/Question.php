@@ -1,24 +1,26 @@
 <?php
 
-namespace BrainGames;
+namespace BrainGames\Games\Even;
 
-class Question
+use BrainGames\Games\QuestionInterface;
+
+class Question implements QuestionInterface
 {
 
     private $question;
 
-    public function __toString(): string
+    public static function getRules(): string
     {
-        return $this->getQuestion();
+        return 'Answer "yes" if the number is even, otherwise answer "no".';
     }
 
-    public function getCorrectAnswer()
+    public function getCorrectAnswer(): string
     {
         $number = (int)$this->question;
         return $this->numberIsEven($number) ? 'yes' : 'no';
     }
 
-    private function getQuestion(): string
+    public function getQuestion(): string
     {
         if (!$this->question) {
             $number = $this->getRandomNumber();

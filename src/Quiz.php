@@ -2,15 +2,34 @@
 
 namespace BrainGames;
 
-class Game
+use BrainGames\Games\Even\Question as EvenQuestion;
+use BrainGames\Games\Calc\Question as CalcQuestion;
+use BrainGames\Games\QuestionInterface;
+
+class Quiz
 {
 
+    public const TYPE_EVEN = 'even';
+    public const TYPE_CALC = 'calc';
+
+    private $typeClasses = [
+        self::TYPE_EVEN => EvenQuestion::class,
+        self::TYPE_CALC => CalcQuestion::class
+    ];
+
     private $cli;
+    /** @var QuestionInterface */
+    private $questionClass;
     private $numberOfQuestions = 3;
 
-    public function __construct(int $numberOfQuestions = null)
+    public function __construct(string $questionType, int $numberOfQuestions = null)
     {
         $this->cli = new Cli();
+        if (isset($this->typeClasses[$questionType])) {
+            $this->questionClass = $this->typeClasses[$questionType];
+        } else {
+            $this->cli->showErrorAndStop();
+        }
         if ($numberOfQuestions) {
             $this->numberOfQuestions = $numberOfQuestions;
         }
@@ -19,13 +38,13 @@ class Game
     public function run()
     {
         $this->cli->showWelcome();
-        $this->cli->showRules();
+        $this->cli->showRules($this->questionClass::getRules());
         $this->cli->askName();
         $this->cli->showHello();
 
-        $correctAnswersCounter = $this->askQuestions($this->numberOfQuestions);
+        $correctAnswersCount = $this->askQuestions($this->numberOfQuestions);
 
-        if ($correctAnswersCounter == $this->numberOfQuestions) {
+        if ($correctAnswersCount == $this->numberOfQuestions) {
             $this->cli->showCongratulations();
         } else {
             $this->cli->showTryAgain();
@@ -36,8 +55,9 @@ class Game
     {
         $correctAnswersCounter = 0;
         for ($i = 0; $i < $numberOfQuestions; $i++) {
-            $question = new Question();
-            $this->cli->askQuestion($question);
+            /** @var $question QuestionInterface */
+            $question = new $this->questionClass();
+            $this->cli->askQuestion($question->getQuestion());
             $correctAnswer = $question->getCorrectAnswer();
             $answer = $this->cli->getAnswer();
 

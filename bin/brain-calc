@@ -11,5 +11,5 @@ if (file_exists($autoloadPathGlobal)) {
     require_once $autoloadPathLocal;
 }
 
-$game = new Quiz( Quiz::TYPE_EVEN, 3);
+$game = new Quiz( Quiz::TYPE_CALC, 3);
 $game->run();
