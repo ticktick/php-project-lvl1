@@ -3,13 +3,7 @@
 
 namespace BrainGames;
 
-$autoloadPathGlobal = __DIR__ . '/../../../autoload.php';
-$autoloadPathLocal = __DIR__ . '/../vendor/autoload.php';
-if (file_exists($autoloadPathGlobal)) {
-    require_once $autoloadPathGlobal;
-} else {
-    require_once $autoloadPathLocal;
-}
+require_once __DIR__ . '/bootstrap.php';
 
-$game = new Quiz( Quiz::TYPE_CALC, 3);
+$game = new Quiz(Quiz::TYPE_CALC, 3);
 $game->run();

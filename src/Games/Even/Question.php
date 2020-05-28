@@ -2,22 +2,15 @@
 
 namespace BrainGames\Games\Even;
 
+use BrainGames\Games\QuestionBase;
 use BrainGames\Games\QuestionInterface;
 
-class Question implements QuestionInterface
+class Question extends QuestionBase implements QuestionInterface
 {
-
-    private $question;
 
     public static function getRules(): string
     {
         return 'Answer "yes" if the number is even, otherwise answer "no".';
-    }
-
-    public function getCorrectAnswer(): string
-    {
-        $number = (int)$this->question;
-        return $this->numberIsEven($number) ? 'yes' : 'no';
     }
 
     public function getQuestion(): string
@@ -25,13 +18,9 @@ class Question implements QuestionInterface
         if (!$this->question) {
             $number = $this->getRandomNumber();
             $this->question = (string)$number;
+            $this->answer = $this->numberIsEven($number) ? 'yes' : 'no';
         }
         return $this->question;
-    }
-
-    private function getRandomNumber(): int
-    {
-        return mt_rand(1, 100);
     }
 
     private function numberIsEven(int $number): bool

@@ -2,29 +2,22 @@
 
 namespace BrainGames\Games\Calc;
 
+use BrainGames\Games\QuestionBase;
 use BrainGames\Games\QuestionInterface;
 
-class Question implements QuestionInterface
+class Question extends QuestionBase implements QuestionInterface
 {
-
-    private $question;
 
     public static function getRules(): string
     {
         return "What is the result of the expression?";
     }
 
-    public function getCorrectAnswer(): string
-    {
-        $res = 0;
-        eval(sprintf('$res = %s;', $this->question));
-        return (string)$res;
-    }
-
     public function getQuestion(): string
     {
         if (!$this->question) {
             $this->question = $this->generateExpression();
+            eval(sprintf('$this->answer = %s;', $this->question));
         }
         return $this->question;
     }
@@ -38,10 +31,5 @@ class Question implements QuestionInterface
 
         $expression = sprintf('%d %s %d', $firstNumber, $operator, $secondNumber);
         return $expression;
-    }
-
-    private function getRandomNumber(): int
-    {
-        return mt_rand(1, 100);
     }
 }
