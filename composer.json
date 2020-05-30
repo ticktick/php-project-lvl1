@@ -22,9 +22,16 @@
         "bin/brain-prime"
     ],
     "autoload": {
-        "psr-4": {
-            "BrainGames\\": "src/"
-        }
+        "files": [
+            "src/cli.php",
+            "src/quiz.php",
+            "src/games/common/lib.php",
+            "src/games/even.php",
+            "src/games/calc.php",
+            "src/games/prime.php",
+            "src/games/gcd.php",
+            "src/games/progression.php"
+        ]
     },
     "scripts": {
         "phpcs": "phpcs"

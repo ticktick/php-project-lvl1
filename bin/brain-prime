@@ -4,4 +4,4 @@
 namespace BrainGames;
 
 $runFunc = require_once __DIR__ . '/run.php';
-$runFunc(Quiz::TYPE_PRIME);
+$runFunc('prime');
