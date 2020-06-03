@@ -2,28 +2,25 @@
 
 namespace BrainGames\games\gcd;
 
-use function BrainGames\games\lib\getRandomNumber;
+use function BrainGames\lib\getRandomNumber;
 
-function getRules(): string
-{
-    return 'Find the greatest common divisor of given numbers.';
-}
+const RULES = 'Find the greatest common divisor of given numbers.';
 
-function getQuestion(): array
+function getRoundData(): array
 {
     $num1 = getRandomNumber();
     $num2 = getRandomNumber();
     $question = sprintf('%d %d', $num1, $num2);
-    $answer = (string)gcd($num1, $num2);
+    $answer = (string)getGCD($num1, $num2);
     return [$question, $answer];
 }
 
-function gcd(int $a, int $b): int
+function getGCD(int $a, int $b): int
 {
     $reminder = $a % $b;
     if ($reminder == 0) {
         return $b;
     } else {
-        return gcd($b, $reminder);
+        return getGCD($b, $reminder);
     }
 }

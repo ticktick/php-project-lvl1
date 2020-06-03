@@ -1,6 +1,6 @@
 <?php
 
-namespace BrainGames\games\lib;
+namespace BrainGames\lib;
 
 function getRandomNumber(): int
 {

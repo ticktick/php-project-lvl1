@@ -25,7 +25,7 @@
         "files": [
             "src/cli.php",
             "src/quiz.php",
-            "src/games/common/lib.php",
+            "src/lib.php",
             "src/games/even.php",
             "src/games/calc.php",
             "src/games/prime.php",

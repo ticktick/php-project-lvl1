@@ -2,33 +2,29 @@
 
 namespace BrainGames\games\progression;
 
-use function BrainGames\games\lib\getRandomNumber;
+use function BrainGames\lib\getRandomNumber;
 
 const PROGRESSION_LENGTH = 10;
 
-function getRules(): string
-{
-    return 'What number is missing in the progression?';
-}
+const RULES = 'What number is missing in the progression?';
 
-function getQuestion(): array
-{
-    $sequence = makeProgression();
-    $randIndex = array_rand($sequence);
-    $randElem = $sequence[$randIndex];
-    $sequence[$randIndex] = '..';
-    $question = join(' ', $sequence);
-    $answer = (string)$randElem;
-    return [$question, $answer];
-}
-
-function makeProgression(): array
+function getRoundData(): array
 {
     $start = getRandomNumber();
     $diff = getRandomNumber();
-    $sequence = [$start];
-    for ($i = 1; $i < PROGRESSION_LENGTH; $i++) {
-        $sequence[] = $sequence[$i - 1] + $diff;
+    $sequence = makeProgression($start, $diff);
+    $randIndex = array_rand($sequence);
+    $answer = (string)$sequence[$randIndex];
+    $sequence[$randIndex] = '..';
+    $question = join(' ', $sequence);
+    return [$question, $answer];
+}
+
+function makeProgression(int $start, int $diff): array
+{
+    $sequence = [];
+    for ($n = 0; $n < PROGRESSION_LENGTH; $n++) {
+        $sequence[] = $start + $diff * $n;
     }
     return $sequence;
 }

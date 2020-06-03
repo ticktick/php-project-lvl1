@@ -2,43 +2,24 @@
 
 namespace BrainGames\games\calc;
 
-use function BrainGames\games\lib\getRandomNumber;
+use function BrainGames\lib\getRandomNumber;
 
-function getRules(): string
-{
-    return "What is the result of the expression?";
-}
+const RULES = "What is the result of the expression?";
 
-function getQuestion(): array
+function getRoundData(): array
 {
-    [$operator, $num1, $num2] = generateExpressionParams();
-    $expression = sprintf('%d %s %d', $num1, $operator, $num2);
-    $operatorFunc = getOperatorFuncs()[$operator];
-    $answer = (string)$operatorFunc((int)$num1, (int)$num2);
-    return [$expression, $answer];
-}
-
-function generateExpressionParams(): array
-{
-    $firstNumber = getRandomNumber();
-    $secondNumber = getRandomNumber();
-    $operatorFuncs = getOperatorFuncs();
-    $operators = array_keys($operatorFuncs);
-    $operator = $operators[array_rand($operators)];
-    return [$operator, $firstNumber, $secondNumber];
-}
-
-function getOperatorFuncs(): array
-{
-    return [
-        '+' => function (int $num1, int $num2) {
-            return $num1 + $num2;
-        },
-        '-' => function (int $num1, int $num2) {
-            return $num1 - $num2;
-        },
-        '*' => function (int $num1, int $num2) {
-            return $num1 * $num2;
-        },
+    $operations = [
+        '+' => fn (int $a, int $b) => $a + $b,
+        '-' => fn (int $a, int $b) => $a - $b,
+        '*' => fn (int $a, int $b) => $a * $b
     ];
+
+    $num1 = getRandomNumber();
+    $num2 = getRandomNumber();
+    $operators = array_keys($operations);
+    $operator = $operators[array_rand($operators)];
+    $question = sprintf('%d %s %d', $num1, $operator, $num2);
+    $operation = $operations[$operator];
+    $answer = (string)$operation($num1, $num2);
+    return [$question, $answer];
 }

@@ -2,14 +2,11 @@
 
 namespace BrainGames\games\prime;
 
-use function BrainGames\games\lib\getRandomNumber;
+use function BrainGames\lib\getRandomNumber;
 
-function getRules(): string
-{
-    return 'Answer "yes" if given number is prime. Otherwise answer "no".';
-}
+const RULES = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-function getQuestion(): array
+function getRoundData(): array
 {
     $number = getRandomNumber();
     $question = (string)$number;
@@ -25,7 +22,7 @@ function isPrime(int $number): bool
     return isPrimeRecursive($number, 3);
 }
 
-function isPrimeRecursive(int $number, int $divisor)
+function isPrimeRecursive(int $number, int $divisor): bool
 {
     if ($divisor * $divisor > $number) {
         return true;
