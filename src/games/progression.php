@@ -12,7 +12,7 @@ function getRoundData(): array
 {
     $start = getRandomNumber();
     $diff = getRandomNumber();
-    $sequence = makeProgression($start, $diff);
+    $sequence = makeProgression($start, $diff, PROGRESSION_LENGTH);
     $randIndex = array_rand($sequence);
     $answer = (string)$sequence[$randIndex];
     $sequence[$randIndex] = '..';
@@ -20,10 +20,10 @@ function getRoundData(): array
     return [$question, $answer];
 }
 
-function makeProgression(int $start, int $diff): array
+function makeProgression(int $start, int $diff, int $progressionLength): array
 {
     $sequence = [];
-    for ($n = 0; $n < PROGRESSION_LENGTH; $n++) {
+    for ($n = 0; $n < $progressionLength; $n++) {
         $sequence[] = $start + $diff * $n;
     }
     return $sequence;
