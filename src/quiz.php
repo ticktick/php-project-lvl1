@@ -4,10 +4,10 @@ namespace BrainGames\quiz;
 
 use BrainGames\cli as ui;
 
-function run(string $rules, callable $getRoundData, int $numberOfQuestions = 3): void
+function run(string $description, callable $getRoundData, int $numberOfQuestions = 3): void
 {
     ui\tell("Welcome to the Brain Game!");
-    ui\tell($rules);
+    ui\tell($description);
     ui\delimiter();
 
     $userName = ui\ask("May I have your name?");

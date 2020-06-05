@@ -5,8 +5,7 @@ namespace BrainGames\games\progression;
 use function BrainGames\lib\getRandomNumber;
 
 const PROGRESSION_LENGTH = 10;
-
-const RULES = 'What number is missing in the progression?';
+const DESCRIPTION = 'What number is missing in the progression?';
 
 function getRoundData(): array
 {

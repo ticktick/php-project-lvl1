@@ -16,19 +16,19 @@ if (file_exists($autoloadPathGlobal)) {
 
 $runFunc = function ($gameType, $numberOfQuestions = 3) {
     $gameNamespace = sprintf("%s\games\%s", __NAMESPACE__, $gameType);
-    $rulesConstantName = $gameNamespace . '\RULES';
+    $descriptionConstantName = $gameNamespace . '\DESCRIPTION';
     $getRoundDataFuncName = $gameNamespace . '\getRoundData';
 
-    if (!defined($rulesConstantName) || !function_exists($getRoundDataFuncName)) {
+    if (!defined($descriptionConstantName) || !function_exists($getRoundDataFuncName)) {
         showErrorAndStop();
     }
 
-    $rules = constant($rulesConstantName);
+    $description = constant($descriptionConstantName);
     $getRoundData = function () use ($getRoundDataFuncName): array {
         return call_user_func($getRoundDataFuncName);
     };
 
-    quiz\run($rules, $getRoundData, $numberOfQuestions);
+    quiz\run($description, $getRoundData, $numberOfQuestions);
 };
 
 return $runFunc;

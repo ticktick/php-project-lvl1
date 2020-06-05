@@ -4,7 +4,7 @@ namespace BrainGames\games\prime;
 
 use function BrainGames\lib\getRandomNumber;
 
-const RULES = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 function getRoundData(): array
 {

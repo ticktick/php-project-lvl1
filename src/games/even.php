@@ -4,7 +4,7 @@ namespace BrainGames\games\even;
 
 use function BrainGames\lib\getRandomNumber;
 
-const RULES = 'Answer "yes" if the number is even, otherwise answer "no".';
+const DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 function getRoundData(): array
 {

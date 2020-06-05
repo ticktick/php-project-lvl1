@@ -4,7 +4,7 @@ namespace BrainGames\games\gcd;
 
 use function BrainGames\lib\getRandomNumber;
 
-const RULES = 'Find the greatest common divisor of given numbers.';
+const DESCRIPTION = 'Find the greatest common divisor of given numbers.';
 
 function getRoundData(): array
 {

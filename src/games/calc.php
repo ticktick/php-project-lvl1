@@ -4,7 +4,7 @@ namespace BrainGames\games\calc;
 
 use function BrainGames\lib\getRandomNumber;
 
-const RULES = "What is the result of the expression?";
+const DESCRIPTION = "What is the result of the expression?";
 
 function getRoundData(): array
 {
